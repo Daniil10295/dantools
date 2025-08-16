@@ -15,7 +15,6 @@ classifiers = [
 license = "MIT"
 license-files = ["LICEN[CS]E*"]
 
-[build-system]
 requires = ["setuptools >= 77.0.3", "colorama >= 0.4.6", "logging~=0.4.9.6"]
 build-backend = "setuptools.build_meta"
 
