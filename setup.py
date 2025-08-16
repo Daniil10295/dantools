@@ -1,19 +1,27 @@
+import os
+
 from setuptools import setup, find_packages
 
 requirements = [
-#     "logging",
-#     "colorama",
+    "logging",
+    "colorama",
 ]
 
-with open("requirements.txt") as f:
-    _requirements = f.read().splitlines()
-    for requirement in _requirements:
-        rq = requirement.split("=")[0].replace("~", "").replace(">", "").replace("<", "")
-        if rq in requirements or rq == "setuptools":
-            continue
-        requirements.append(rq)
+def get_requirements():
+    if not os.path.exists("requirements.txt"): return None
+    requirements = []
+    with open("requirements.txt") as f:
+        _requirements = f.read().splitlines()
+        for requirement in _requirements:
+            rq = requirement.split("=")[0].replace("~", "").replace(">", "").replace("<", "")
+            if rq in requirements or rq == "setuptools":
+                continue
+            requirements.append(rq)
+    return requirements
 
-_version = "0.1.0"
+requirements = get_requirements() or requirements
+
+_version = "0.1.1"
 
 with open(__file__.rstrip("setup.py") + "README.md", "r") as f:
     long_description = f.read().replace("> [!WARNING]", "WARNING")
