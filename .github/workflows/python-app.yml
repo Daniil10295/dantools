@@ -40,7 +40,7 @@ jobs:
         pytest
 
     - name: Build binary wheel and a source tarball
-      run: py -m build
+      run: python3 -m build
 
     - name: Publish to PyPi
       uses: pypa/gh-action-pypi-publish@release/v1
